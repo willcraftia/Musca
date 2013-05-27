@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // アセンブリに関連付けられている情報を変更するには、
 // これらの属性値を変更してください。
 [assembly: AssemblyTitle("Musca")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("A noise class library.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("willcraftia")]
 [assembly: AssemblyProduct("Musca")]
-[assembly: AssemblyCopyright("Copyright ©  2013")]
+[assembly: AssemblyCopyright("Nothing")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

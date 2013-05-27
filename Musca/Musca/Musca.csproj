@@ -76,6 +76,9 @@
     <Compile Include="SinFractal.cs" />
     <Compile Include="SquaredMetric.cs" />
     <Compile Include="SumFractal.cs" />
+    <Compile Include="Toolkit\Bounds.cs" />
+    <Compile Include="Toolkit\NoiseMap.cs" />
+    <Compile Include="Toolkit\NoiseMapBuilder.cs" />
     <Compile Include="Turbulence.cs" />
     <Compile Include="Voronoi.cs" />
   </ItemGroup>
