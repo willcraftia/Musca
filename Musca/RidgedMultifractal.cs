@@ -1,6 +1,7 @@
 ﻿#region Using
 
 using System;
+using System.ComponentModel;
 
 #endregion
 
@@ -8,22 +9,24 @@ namespace Musca
 {
     public sealed class RidgedMultifractal : Musgrave
     {
-        public const float MusgraveHurst = 1;
+        public const float MusgraveHurst = 1.0f;
 
-        public const float MusgraveOffset = 1;
+        public const float DefaultOffset = 1.0f;
 
-        public const float MusgraveGain = 2;
+        public const float DefaultGain = 2.0f;
 
-        float offset = MusgraveOffset;
+        float offset = DefaultOffset;
 
-        float gain = MusgraveGain;
+        float gain = DefaultGain;
 
+        [DefaultValue(DefaultOffset)]
         public float Offset
         {
             get { return offset; }
             set { offset = value; }
         }
 
+        [DefaultValue(DefaultGain)]
         public float Gain
         {
             get { return gain; }
@@ -32,6 +35,8 @@ namespace Musca
 
         public RidgedMultifractal()
         {
+            // 基底クラスの DefaultValue と異なってしまうが、
+            // 回避の方法が無いため無視する。
             Hurst = MusgraveHurst;
         }
 

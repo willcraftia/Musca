@@ -1,6 +1,7 @@
 ﻿#region Using
 
 using System;
+using System.ComponentModel;
 
 #endregion
 
@@ -14,6 +15,8 @@ namespace Musca
     /// </summary>
     public sealed class Simplex : NamedObject, INoiseSource
     {
+        public const int DefaultSeed = 0;
+
         const int WrapIndex = 256;
 
         const int ModMask = 255;
@@ -26,6 +29,7 @@ namespace Musca
 
         bool initialized;
 
+        [DefaultValue(DefaultSeed)]
         public int Seed
         {
             get { return seed; }

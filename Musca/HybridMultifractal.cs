@@ -1,6 +1,7 @@
 ﻿#region Using
 
 using System;
+using System.ComponentModel;
 
 #endregion
 
@@ -10,10 +11,11 @@ namespace Musca
     {
         public const float MusgraveHurst = 0.25f;
 
-        public const float MusgraveOffset = 0.7f;
+        public const float DefaultOffset = 0.7f;
 
-        float offset = MusgraveOffset;
+        float offset = DefaultOffset;
 
+        [DefaultValue(DefaultOffset)]
         public float Offset
         {
             get { return offset; }
@@ -22,6 +24,8 @@ namespace Musca
 
         public HybridMultifractal()
         {
+            // 基底クラスの DefaultValue と異なってしまうが、
+            // 回避の方法が無いため無視する。
             Hurst = MusgraveHurst;
         }
 

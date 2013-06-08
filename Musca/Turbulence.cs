@@ -1,6 +1,7 @@
 ﻿#region Using
 
 using System;
+using System.ComponentModel;
 
 #endregion
 
@@ -8,9 +9,9 @@ namespace Musca
 {
     public sealed class Turbulence : NamedObject, INoiseSource
     {
-        public const float DefaultFrequency = 1;
+        public const float DefaultFrequency = 1.0f;
 
-        public const float DefaultPower = 1;
+        public const float DefaultPower = 1.0f;
 
         public const int DefaultRoughness = 3;
 
@@ -30,12 +31,14 @@ namespace Musca
 
         int roughness = DefaultRoughness;
 
+        [DefaultValue(null)]
         public INoiseSource Source
         {
             get { return source; }
             set { source = value; }
         }
 
+        [DefaultValue(DefaultFrequency)]
         public float Frequency
         {
             get { return frequency; }
@@ -49,12 +52,14 @@ namespace Musca
             }
         }
 
+        [DefaultValue(DefaultPower)]
         public float Power
         {
             get { return power; }
             set { power = value; }
         }
 
+        [DefaultValue(DefaultRoughness)]
         public int Roughness
         {
             get { return roughness; }

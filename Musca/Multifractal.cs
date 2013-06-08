@@ -1,6 +1,7 @@
 ﻿#region Using
 
 using System;
+using System.ComponentModel;
 
 #endregion
 
@@ -8,8 +9,11 @@ namespace Musca
 {
     public sealed class Multifractal : Musgrave
     {
-        float offset = 1f;
+        public const float DefaultOffset = 1.0f;
 
+        float offset = DefaultOffset;
+
+        [DefaultValue(DefaultOffset)]
         public float Offset
         {
             get { return offset; }

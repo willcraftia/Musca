@@ -1,6 +1,7 @@
 ﻿#region Using
 
 using System;
+using System.ComponentModel;
 
 #endregion
 
@@ -8,26 +9,42 @@ namespace Musca
 {
     public sealed class ScalePoint : NamedObject, INoiseSource
     {
-        float scaleX = 1;
+        public const float DefaultScaleX = 1.0f;
+        
+        public const float DefaultScaleY = 1.0f;
+        
+        public const float DefaultScaleZ = 1.0f;
 
-        float scaleY = 1;
+        INoiseSource source;
 
-        float scaleZ = 1;
+        float scaleX = DefaultScaleX;
 
-        public INoiseSource Source { get; set; }
+        float scaleY = DefaultScaleY;
 
+        float scaleZ = DefaultScaleZ;
+
+        [DefaultValue(null)]
+        public INoiseSource Source
+        {
+            get { return source; }
+            set { source = value; }
+        }
+
+        [DefaultValue(DefaultScaleX)]
         public float ScaleX
         {
             get { return scaleX; }
             set { scaleX = value; }
         }
 
+        [DefaultValue(DefaultScaleY)]
         public float ScaleY
         {
             get { return scaleY; }
             set { scaleY = value; }
         }
 
+        [DefaultValue(DefaultScaleZ)]
         public float ScaleZ
         {
             get { return scaleZ; }
@@ -36,7 +53,7 @@ namespace Musca
 
         public float Sample(float x, float y, float z)
         {
-            return Source.Sample(x * scaleX, y * scaleY, z * scaleZ);
+            return source.Sample(x * scaleX, y * scaleY, z * scaleZ);
         }
     }
 }

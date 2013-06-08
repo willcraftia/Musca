@@ -1,6 +1,7 @@
 ﻿#region Using
 
 using System;
+using System.ComponentModel;
 
 #endregion
 
@@ -93,40 +94,48 @@ namespace Musca
 
         #endregion
 
+        public const int DefaultSeed = 0;
+
+        public const float DefaultDisplacement = 1.0f;
+
+        public const float DefaultFrequency = 1.0f;
+
+        public const bool DefaultDistanceEnabled = false;
+
         static readonly IMetric DefaultMetric = new SquaredMetric();
 
-        public const float DefaultDisplacement = 1;
-
-        public const float DefaultFrequency = 1;
-
-        int seed = Environment.TickCount;
+        int seed = DefaultSeed;
 
         float displacement = DefaultDisplacement;
 
         float frequency = DefaultFrequency;
 
-        bool distanceEnabled;
+        bool distanceEnabled = DefaultDistanceEnabled;
 
         IMetric metric = DefaultMetric;
 
+        [DefaultValue(DefaultSeed)]
         public int Seed
         {
             get { return seed; }
             set { seed = value; }
         }
 
+        [DefaultValue(DefaultDisplacement)]
         public float Displacement
         {
             get { return displacement; }
             set { displacement = value; }
         }
 
+        [DefaultValue(DefaultFrequency)]
         public float Frequency
         {
             get { return frequency; }
             set { frequency = value; }
         }
 
+        [DefaultValue(DefaultDistanceEnabled)]
         public bool DistanceEnabled
         {
             get { return distanceEnabled; }

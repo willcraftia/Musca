@@ -1,6 +1,7 @@
 ﻿#region Using
 
 using System;
+using System.ComponentModel;
 
 #endregion
 
@@ -8,11 +9,11 @@ namespace Musca
 {
     public sealed class Select : NamedObject, INoiseSource
     {
-        public const float DefaultEdgeFalloff = 0;
+        public const float DefaultEdgeFalloff = 0.0f;
 
-        public const float DefaultLowerBound = -1;
+        public const float DefaultLowerBound = -1.0f;
 
-        public const float DefaultUpperBound = 1;
+        public const float DefaultUpperBound = 1.0f;
 
         INoiseSource controller;
 
@@ -30,24 +31,28 @@ namespace Musca
 
         bool edgeFalloffEnabled;
 
+        [DefaultValue(null)]
         public INoiseSource Controller
         {
             get { return controller; }
             set { controller = value; }
         }
 
+        [DefaultValue(null)]
         public INoiseSource LowerSource
         {
             get { return lowerSource; }
             set { lowerSource = value; }
         }
 
+        [DefaultValue(null)]
         public INoiseSource UpperSource
         {
             get { return upperSource; }
             set { upperSource = value; }
         }
 
+        [DefaultValue(DefaultEdgeFalloff)]
         public float EdgeFalloff
         {
             get { return edgeFalloff; }
@@ -58,6 +63,7 @@ namespace Musca
             }
         }
 
+        [DefaultValue(DefaultLowerBound)]
         public float LowerBound
         {
             get { return lowerBound; }
@@ -68,6 +74,7 @@ namespace Musca
             }
         }
 
+        [DefaultValue(DefaultUpperBound)]
         public float UpperBound
         {
             get { return upperBound; }

@@ -1,6 +1,7 @@
 ﻿#region Using
 
 using System;
+using System.ComponentModel;
 
 #endregion
 
@@ -8,8 +9,11 @@ namespace Musca
 {
     public sealed class SimpleVoronoi : Voronoi
     {
-        int positionIndex;
+        public const int DefaultPositionIndex = 0;
 
+        int positionIndex = DefaultPositionIndex;
+
+        [DefaultValue(DefaultPositionIndex)]
         public int PositionIndex
         {
             get { return positionIndex; }

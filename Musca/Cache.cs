@@ -1,6 +1,7 @@
 ﻿#region Using
 
 using System;
+using System.ComponentModel;
 
 #endregion
 
@@ -20,6 +21,7 @@ namespace Musca
 
         INoiseSource source;
 
+        [DefaultValue(null)]
         public INoiseSource Source
         {
             get { return source; }

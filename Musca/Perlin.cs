@@ -1,6 +1,7 @@
 ﻿#region Using
 
 using System;
+using System.ComponentModel;
 
 #endregion
 
@@ -13,13 +14,15 @@ namespace Musca
     /// </summary>
     public sealed class Perlin : NamedObject, INoiseSource
     {
+        public const int DefaultSeed = 0;
+
         public static readonly IFadeCurve DefaultFadeCurve = new SCurve3();
 
         const int WrapIndex = 256;
 
         const int ModMask = 255;
 
-        int seed = Environment.TickCount;
+        int seed = DefaultSeed;
 
         IFadeCurve fadeCurve = DefaultFadeCurve;
 
@@ -29,6 +32,7 @@ namespace Musca
 
         bool initialized;
 
+        [DefaultValue(DefaultSeed)]
         public int Seed
         {
             get { return seed; }

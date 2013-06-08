@@ -1,6 +1,7 @@
 ﻿#region Using
 
 using System;
+using System.ComponentModel;
 
 #endregion
 
@@ -16,24 +17,28 @@ namespace Musca
 
         INoiseSource displaceZ;
 
+        [DefaultValue(null)]
         public INoiseSource Source
         {
             get { return source; }
             set { source = value; }
         }
 
+        [DefaultValue(null)]
         public INoiseSource DisplaceX
         {
             get { return displaceX; }
             set { displaceX = value; }
         }
 
+        [DefaultValue(null)]
         public INoiseSource DisplaceY
         {
             get { return displaceY; }
             set { displaceY = value; }
         }
 
+        [DefaultValue(null)]
         public INoiseSource DisplaceZ
         {
             get { return displaceZ; }

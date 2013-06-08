@@ -1,6 +1,7 @@
 ﻿#region Using
 
 using System;
+using System.ComponentModel;
 
 #endregion
 
@@ -11,8 +12,11 @@ namespace Musca
     /// </summary>
     public sealed class MinkowskiMetric : IMetric
     {
-        float p = 1;
+        public const float DefaultP = 1.0f;
 
+        float p = DefaultP;
+
+        [DefaultValue(DefaultP)]
         public float P
         {
             get { return p; }

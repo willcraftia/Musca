@@ -1,6 +1,7 @@
 ﻿#region Using
 
 using System;
+using System.ComponentModel;
 
 #endregion
 
@@ -8,8 +9,11 @@ namespace Musca
 {
     public sealed class Heterofractal : Musgrave
     {
-        float offset = 0.7f;
+        public const float DefaultOffset = 0.7f;
 
+        float offset = DefaultOffset;
+
+        [DefaultValue(DefaultOffset)]
         public float Offset
         {
             get { return offset; }

@@ -1,6 +1,7 @@
 ﻿#region Using
 
 using System;
+using System.ComponentModel;
 
 #endregion
 
@@ -30,11 +31,13 @@ namespace Musca
 
         bool initialized;
 
+        [DefaultValue(null)]
         public INoiseSource Source { get; set; }
 
         /// <summary>
         /// H (Hurst).
         /// </summary>
+        [DefaultValue(DefaultHurst)]
         public float Hurst
         {
             get { return hurst; }
@@ -47,6 +50,7 @@ namespace Musca
             }
         }
 
+        [DefaultValue(DefaultFrequency)]
         public float Frequency
         {
             get { return frequency; }
@@ -59,6 +63,7 @@ namespace Musca
             }
         }
 
+        [DefaultValue(DefaultLacunarity)]
         public float Lacunarity
         {
             get { return lacunarity; }
@@ -71,6 +76,7 @@ namespace Musca
             }
         }
 
+        [DefaultValue(DefaultOctaveCount)]
         public int OctaveCount
         {
             get { return octaveCount; }
