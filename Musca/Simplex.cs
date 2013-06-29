@@ -39,11 +39,19 @@ namespace Musca
         public void Initialize()
         {
             Reseed();
+
+            initialized = true;
+        }
+
+        public void Reseed()
+        {
+            random = new Random(seed);
+            InitializePermutationTables();
         }
 
         public float Sample(float x, float y, float z)
         {
-            if (!initialized) Reseed();
+            if (!initialized) throw new InvalidOperationException("This instance has not been initialized once.");
 
             const float F3 = 1.0f / 3.0f;
             const float G3 = 1.0f / 6.0f;
@@ -180,14 +188,6 @@ namespace Musca
             // Add contributions from each corner to get the final noise value.
             // The result is scaled to stay just inside [-1,1]
             return 32.0f * (n0 + n1 + n2 + n3);
-        }
-
-        public void Reseed()
-        {
-            random = new Random(seed);
-            InitializePermutationTables();
-
-            initialized = true;
         }
 
         void InitializePermutationTables()

@@ -127,11 +127,19 @@ namespace Musca
         public void Initialize()
         {
             Reseed();
+
+            initialized = true;
+        }
+
+        public void Reseed()
+        {
+            random = new Random(seed);
+            InitializeLookupTables();
         }
 
         public float Sample(float x, float y, float z)
         {
-            if (!initialized) Reseed();
+            if (!initialized) throw new InvalidOperationException("This instance has not been initialized once.");
 
             float t;
 
@@ -202,14 +210,6 @@ namespace Musca
             d = MathHelper.Lerp(a, b, sy);
 
             return MathHelper.Lerp(c, d, sz);
-        }
-
-        public void Reseed()
-        {
-            random = new Random(seed);
-            InitializeLookupTables();
-
-            initialized = true;
         }
 
         float GenerateGradientValue()

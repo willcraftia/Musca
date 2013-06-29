@@ -58,11 +58,19 @@ namespace Musca
         public void Initialize()
         {
             Reseed();
+
+            initialized = true;
+        }
+
+        public void Reseed()
+        {
+            random = new Random(seed);
+            InitializePermutationTables();
         }
 
         public float Sample(float x, float y, float z)
         {
-            if (!initialized) Reseed();
+            if (!initialized) throw new InvalidOperationException("This instance has not been initialized once.");
 
             int fx = MathHelper.Floor(x);
             int fy = MathHelper.Floor(y);
@@ -109,14 +117,6 @@ namespace Musca
             var l4 = MathHelper.Lerp(l0, l1, v);
             var l5 = MathHelper.Lerp(l2, l3, v);
             return MathHelper.Lerp(l4, l5, w);
-        }
-
-        public void Reseed()
-        {
-            random = new Random(seed);
-            InitializePermutationTables();
-
-            initialized = true;
         }
 
         void InitializePermutationTables()
